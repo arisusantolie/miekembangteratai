@@ -1,3 +1,11 @@
+<?php
+if ($_SESSION["role"] != "ADMIN") {
+    echo "<script>
+    window.location.href='" . BASEURL . "/Listpesanan'
+    </script>";
+    exit;
+}
+?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 

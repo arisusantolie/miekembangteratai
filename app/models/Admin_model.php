@@ -20,6 +20,7 @@ class Admin_model
             if (password_verify($data["password"], $check["password"])) {
                 $_SESSION["login"] = true;
                 $_SESSION["username"] = $data["username"];
+                $_SESSION["role"] = $check["role"];
                 return true;
                 exit;
             };

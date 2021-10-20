@@ -4,6 +4,7 @@ if (!isset($_SESSION["login"])) {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,18 +60,21 @@ if (!isset($_SESSION["login"])) {
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <?php if($_SESSION["role"]==="ADMIN") :?>
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/Adminhome/index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <?php endif;?>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
 
             <!-- Nav Item - produk -->
+           
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/Listpesanan">
                     <i class="fas fa-list-alt"></i>
@@ -83,14 +87,16 @@ if (!isset($_SESSION["login"])) {
                     <span>List Utang</span></a>
             </li>
 
+            <?php if($_SESSION["role"]=="ADMIN") :?>
             <!-- Nav Item - produk -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/Produk">
                     <i class=" fab fa-product-hunt"></i>
                     <span>Produk</span></a>
             </li>
+            <?php endif;?>
 
-
+            <?php if($_SESSION["role"]=="ADMIN") :?>
             <!-- Nav Item - bahan -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/Bahan">
@@ -104,12 +110,13 @@ if (!isset($_SESSION["login"])) {
                     <i class="fas fa-shopping-cart"></i>
                     <span>Pembelian Bahan</span></a>
             </li>
-
+       
+<!-- 
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/PembelianProduk">
                     <i class="fas fa-shopping-cart"></i>
                     <span>Pembelian Produk</span></a>
-            </li>
+            </li> -->
 
             <!-- Nav Item - Suppliers -->
             <li class="nav-item">
@@ -117,7 +124,7 @@ if (!isset($_SESSION["login"])) {
                     <i class="fas fa-user-friends"></i>
                     <span>Suppliers</span></a>
             </li>
-
+            <?php endif;?>
             <!-- Nav Item - Customers -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/Customer">
@@ -132,6 +139,7 @@ if (!isset($_SESSION["login"])) {
                     <span>Produksi</span></a>
             </li>
 
+
             <!-- Nav Item - Penjualan -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= BASEURL ?>/Penjualan">
@@ -141,13 +149,15 @@ if (!isset($_SESSION["login"])) {
 
 
 
+            
+            <?php if($_SESSION["role"]=="ADMIN") :?>
             <!-- Nav Item - Reporting -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-chart-line"></i>
                     <span>Laporan</span></a>
-            </li>
-
+            </li> -->
+            <?php endif;?>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -187,8 +197,8 @@ if (!isset($_SESSION["login"])) {
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Fandri Lie</span>
-                                <img class="img-profile rounded-circle" src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p160x160/42306203_10209665433430902_6542140394820337664_n.jpg?_nc_cat=100&_nc_oc=AQlow0agEkHKLjQTiDp32iJIqHYaRYn5tCyWDaoeUisoPAuaDhNeqw63jctz4XWQIqw&_nc_ht=scontent-sin6-1.xx&oh=231c7079b8400ff9f3d8c9249f1eb84f&oe=5E63EBEB">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["username"] ?></span>
+                                <img class="img-profile rounded-circle" src="https://i.pinimg.com/736x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

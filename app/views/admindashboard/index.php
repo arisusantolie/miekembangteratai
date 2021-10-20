@@ -1,3 +1,12 @@
+<?php
+if ($_SESSION["role"] != "ADMIN") {
+    echo "<script>
+    window.location.href='" . BASEURL . "/Listpesanan'
+    </script>";
+    exit;
+}
+?>
+
        <!-- Begin Page Content -->
        <div class="container-fluid">
 
@@ -16,7 +25,7 @@
                            <div class="row no-gutters align-items-center">
                                <div class="col mr-2">
                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">PENJUALAN (BULAN)</div>
-                                   <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?= formatrupiah::rupiah($data["penjualanmonthly"]["total"]); ?></div>
+                                   <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?php echo isset($data["penjualanmonthly"]["total"]) ?  formatrupiah::rupiah($data["penjualanmonthly"]["total"]) : 0 ?></div>
                                </div>
                                <div class="col-auto">
                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -33,7 +42,7 @@
                            <div class="row no-gutters align-items-center">
                                <div class="col mr-2">
                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">PEMBELIAN (BULAN)</div>
-                                   <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?= formatrupiah::rupiah($data["pembelianmonthly"]["total"])  ?></div>
+                                   <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?= isset($data["pembelianmonthly"]["total"]) ?  formatrupiah::rupiah($data["pembelianmonthly"]["total"]) : 0 ?></div>
                                </div>
                                <div class="col-auto">
                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -51,7 +60,7 @@
                            <div class="row no-gutters align-items-center">
                                <div class="col mr-2">
                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">SUDAH BAYAR (BULAN)</div>
-                                   <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. <?= formatrupiah::rupiah($data["sudahbayar"]["total"])  ?></div>
+                                   <div class="h5 mb-0 font-weight-bold text-gray-800">Rp.<?= isset($data["sudahbayar"]["total"]) ?  formatrupiah::rupiah($data["sudahbayar"]["total"]) : 0 ?> </div>
                                </div>
                                <div class="col-auto">
                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
